@@ -7,28 +7,213 @@
     <meta name="description" content="Ai Code Craft - development with passion" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <style>
+<style>
+/* Allgemeine Regeln */ 
         body {
             background-color: #0D1117;
             color: #C9D1D9;
         }
-        .navbar {
-            background-color: #161B22;
+        a {
+            color: #58A6FF;
+        }
+        a:hover {
+            color: #1F6FEB;
+        }
+        .btn {
+            border-radius: 2px;
+        }
+        .close {
+            color: #58A6FF;
+            font-size: 1.5em;
         }
         .card {
             background-color: #161B22;
             border: 1px solid #05172c;
+            border-radius: 2px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
         }
-        .modal-content {
+        /* Navbar Regeln */
+        .navbar {
+            background-color: #161B22;
+        }
+        
+        .logo {
+            margin-top: 15px;
+            width: 199px;
+            height: 50px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .nav-social-links {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .nav-social-links .nav-item {
+            margin-left: 15px;
+        }
+        .nav-social-links .nav-item a {
+            color: #000;
+            font-size: 16px;
+        }
+        .nav-social-links .nav-item a:hover {
+            color: #f00;
+        }
+        .navbar-nav .nav-link {
+            color: #000;
+            font-size: 13px;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #f00;
+        }
+        .navbar-nav .nav-item .fab {
+            color: #aba5a5;
+            font-size: 18px;
+        }
+        .navbar-nav .nav-item .fab:hover {
+            color: #f00;
+        }
+        /* Modal Regeln */
+        .modal .modal-content {
             background-color: #0D1117;
             color: #C9D1D9;
+            border: 1px solid #05172c;
+            border-radius: 2px;
         }
+        .modal .modal-header,
+        .modal .modal-footer {
+            border: none;
+        }
+        .modal-content p {
+            text-align: justify;
+        }
+        .modal-style-service {
+            list-style-type: none;
+        }
+        h1,h2 {
+        font-size: 1.75rem;
+
+        }
+
+        h3,h4,h5 {
+        font-size: 1.45rem;
+
+        }
+        /* Footer Regeln */
         footer {
             background-color: #161B22;
-            color: #C9D1D9;
             padding: 20px 0;
+            color: #C9D1D9;
+            margin-top: 20px;
         }
-    </style>
+        .footer-image {
+            height: 250px;
+            width: auto;
+            object-fit: cover;
+            margin: -50px 0;
+            border: 1px solid #C9D1D9;
+        }
+        .footer-card {
+            background-color: transparent;
+            border-bottom: 1px solid #05172c;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        footer h3 {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        footer ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        footer ul li {
+            padding-bottom: 5px;
+        }
+        .copyright-row {
+            background-color: #0D1117;
+            text-align: center;
+            font-size: 12px;
+            padding-top: 20px;
+        }
+    /* Styling für Code-Highlights, passend zum dunklen Thema */
+.highlight {
+    background-color: #21262D !important; /* Etwas hellerer Hintergrund für den Code-Block */
+    color: #C9D1D9 !important; /* Heller Text für guten Kontrast */
+    border-radius: 5px !important; /* Abgerundete Ecken für eine weiche Optik */
+    padding: 12px !important; /* Genügend Innenabstand für Lesbarkeit */
+    overflow: auto !important; /* Scrollen bei Bedarf */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7) !important; /* Sanfter Schlagschatten */
+}
+
+/* Styling für die eigentlichen Codezeilen */
+.highlight pre {
+    background-color: transparent !important; /* Kein Hintergrund für Pre-Tag */
+    color: inherit !important; /* Übernimmt die Textfarbe des übergeordneten Elements */
+    font-family: 'Fira Code', monospace !important; /* Monospace Schriftart für Code */
+    font-size: 14px !important; /* Angemessene Schriftgröße */
+    line-height: 1.6 !important; /* Gute Zeilenhöhe für Lesbarkeit */
+    margin: 0 !important; /* Kein zusätzlicher Abstand */
+}
+
+/* Styling für spezifische Elemente im Code (falls vorhanden) */
+.highlight .hljs-keyword,
+.highlight .hljs-built_in,
+.highlight .hljs-literal,
+.highlight .hljs-symbol,
+.highlight .hljs-bullet,
+.highlight .hljs-link {
+    color: #FF7B72 !important; /* Hervorhebung von Schlüsselwörtern in Rot */
+}
+
+.highlight .hljs-string,
+.highlight .hljs-title,
+.highlight .hljs-name,
+.highlight .hljs-type,
+.highlight .hljs-attr {
+    color: #A5D6FF !important; /* Hervorhebung von Strings und Titeln in Blau */
+}
+
+.highlight .hljs-comment,
+.highlight .hljs-quote {
+    color: #8B949E !important; /* Gedämpfte Farbe für Kommentare */
+    font-style: italic !important; /* Kommentare kursiv */
+}
+
+/* Fancy Effekte beim Überfahren mit der Maus */
+.highlight:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important; /* Schlagschatten beim Hover */
+    transform: scale(1.02) !important; /* Leichte Vergrößerung beim Hover */
+}
+
+/* Anpassung der Scrollbar für ein dunkles Thema */
+.highlight::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.highlight::-webkit-scrollbar-thumb {
+    background-color: #444C56 !important; /* Dunklere Scrollbar für den Hintergrund */
+    border-radius: 10px !important;
+}
+
+.highlight::-webkit-scrollbar-track {
+    background-color: #0D1117 !important;
+}
+
+   
+
+
+        /* Medienabfrage */
+        @media (max-width: 768px) {
+            .footer-image {
+                height: auto;
+                width: 100%;
+                margin: 20px 0;
+            }
+        }               
+</style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
