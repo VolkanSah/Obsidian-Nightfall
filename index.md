@@ -44,7 +44,7 @@ function fetchRepos(page) {
             <div class="card-body">
               <h5 class="card-title">${repo.name}</h5>
               <p class="card-text">${repo.description || 'Keine Beschreibung verfügbar'}</p>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#repoModal-${index}">Details anzeigen</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#repoModal-${index}" onclick="loadReadme('${repo.full_name}', ${index})">Details anzeigen</button>
             </div>
           </div>
 
@@ -57,11 +57,11 @@ function fetchRepos(page) {
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
-                  <p><strong>Beschreibung:</strong> ${repo.description || 'Keine Beschreibung verfügbar'}</p>
-                  <p><strong>Link zum Repository:</strong> <a href="${repo.html_url}" target="_blank">${repo.html_url}</a></p>
+                <div class="modal-body" id="repoContent-${index}">
+                  <p>Lade README...</p>
                 </div>
                 <div class="modal-footer">
+                  <a href="${repo.html_url}" target="_blank" class="btn btn-primary">Zum Repository</a>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
                 </div>
               </div>
@@ -71,7 +71,7 @@ function fetchRepos(page) {
         repoList.appendChild(listItem);
       });
 
-      updatePagination(filteredData.length);
+      updatePagination();
     })
     .catch(error => {
       console.error('Error:', error);
@@ -80,11 +80,24 @@ function fetchRepos(page) {
     });
 }
 
-function updatePagination(filteredCount) {
+function loadReadme(repoFullName, index) {
+  fetch(`https://api.github.com/repos/${repoFullName}/readme`, {
+    headers: { 'Accept': 'application/vnd.github.v3.html' }
+  })
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById(`repoContent-${index}`).innerHTML = data;
+  })
+  .catch(error => {
+    document.getElementById(`repoContent-${index}`).innerHTML = '<p>README konnte nicht geladen werden.</p>';
+  });
+}
+
+function updatePagination() {
   const totalPages = Math.ceil(totalRepos / perPage);
   document.getElementById('page-info').textContent = `Seite ${currentPage} von ${totalPages}`;
   document.getElementById('prev').disabled = currentPage === 1;
-  document.getElementById('next').disabled = currentPage === totalPages || filteredCount <= perPage;
+  document.getElementById('next').disabled = currentPage === totalPages;
 }
 
 document.getElementById('prev').addEventListener('click', () => {
