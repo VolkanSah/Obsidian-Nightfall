@@ -11,7 +11,6 @@ title: Meine GitHub Repositories
 </div>
 
 <div id="pagination" class="text-center mt-4">
-  <It seems there was a cut-off in the middle of the `index.md` file, so I’ll continue from where it left off:
 
 
 
