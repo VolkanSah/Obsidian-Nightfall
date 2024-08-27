@@ -1,6 +1,6 @@
-title: My GitHub Page
-description: >- 
-  Eine einfache Seite, die meine GitHub-Repositories anzeigt.
+title: Obsidian Nightfall
+description: >-
+  An elegante, dark Theme by Volkan Sah
 baseurl: "" # Muss leer sein, wenn du GitHub Pages mit einem benutzerdefinierten Domainnamen nutzt.
 url: "https://volkansah.github.io/" # Ersetze durch deine URL.
-theme: minima
+theme: minima # Oder dein eigenes Theme, z.B. "obsidian-nightfall", falls entwickelt.
