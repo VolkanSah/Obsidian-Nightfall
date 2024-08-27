@@ -1,21 +1,3 @@
----
-layout: default
-title: Meine GitHub Repositories
----
-
-## GitHub Repositories
-
-<ul id="repo-list"></ul>
-<div id="pagination">
-  <button id="prev" disabled>Vorherige</button>
-  <span id="page-info"></span>
-  <button id="next">Nächste</button>
-</div>
-
-<!-- Modals werden hier dynamisch hinzugefügt -->
-<div id="repo-modals"></div>
-
-<script>
 let currentPage = 1;
 const perPage = 6;
 let totalRepos = 0;
@@ -35,12 +17,12 @@ function fetchRepos(page) {
       data.filter(repo => {
         return !repo.fork && repo.name !== 'volkansah.github.io' && repo.name !== 'VolkanSah';
       }).forEach(repo => {
-        // Create list item
+        // Listeneintrag für jedes Repo erstellen
         let listItem = document.createElement('li');
         listItem.innerHTML = `<a href="#" data-toggle="modal" data-target="#modal-${repo.name}">${repo.name}</a> - ${repo.description || 'Keine Beschreibung verfügbar'}`;
         repoList.appendChild(listItem);
 
-        // Create modal
+        // Modal für jedes Repo erstellen
         let modal = document.createElement('div');
         modal.className = 'modal fade';
         modal.id = `modal-${repo.name}`;
@@ -68,7 +50,7 @@ function fetchRepos(page) {
         `;
         repoModals.appendChild(modal);
 
-        // Load README into modal
+        // README-Datei in das Modal laden
         fetch(`https://api.github.com/repos/volkansah/${repo.name}/readme`, {
           headers: { 'Accept': 'application/vnd.github.v3.html+json' }
         })
@@ -113,4 +95,3 @@ document.getElementById('next').addEventListener('click', () => {
 });
 
 fetchRepos(currentPage);
-</script>
