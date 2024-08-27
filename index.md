@@ -3,8 +3,10 @@ layout: default
 title: My GitHub Repositories
 ---
 
+## GitHub Repositories
+
 <div class="container">
-    <ul id="repo-list" class="list-unstyled row"></ul>
+    <div class="row" id="repo-list" data-masonry='{"percentPosition": true }'></div>
 </div>
 
 <script>
@@ -22,7 +24,7 @@ function fetchAllRepos() {
       });
 
       filteredData.forEach((repo, index) => {
-        let listItem = document.createElement('li');
+        let listItem = document.createElement('div');
         listItem.className = 'col-md-4';
 
         listItem.innerHTML = `
@@ -55,6 +57,14 @@ function fetchAllRepos() {
           </div>
         `;
         repoList.appendChild(listItem);
+      });
+
+      // Masonry reinitialize after adding all items
+      imagesLoaded(repoList, function() {
+        new Masonry(repoList, {
+          itemSelector: '.col-md-4',
+          percentPosition: true
+        });
       });
     })
     .catch(error => {
