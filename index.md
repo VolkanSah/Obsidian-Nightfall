@@ -3,8 +3,6 @@ layout: default
 title: My GitHub Repositories
 ---
 
-## GitHub Repositories
-
 <div class="container">
     <div class="row" id="repo-list" data-masonry='{"percentPosition": true }'></div>
 </div>
