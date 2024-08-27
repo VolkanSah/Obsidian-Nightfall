@@ -16,7 +16,7 @@ title: Meine GitHub Repositories
 
 <script>
 let currentPage = 1;
-const perPage = 100;
+const perPage = 50;
 let totalRepos = 0;
 
 function fetchRepos(page) {
