@@ -1,0 +1,33 @@
+name: Deploy Jekyll Site
+
+on:
+  push:
+    branches:
+      - main  # Führe den Workflow bei einem Push auf den Hauptbranch aus
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7  # Wähle die Ruby-Version, die du benötigst
+
+    - name: Install dependencies
+      run: bundle install
+
+    - name: Build Jekyll site
+      run: JEKYLL_ENV=production bundle exec jekyll build
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GH_TOKEN }}
+        publish_dir: ./_site  # Der Ordner, in dem die gebaute Seite liegt
