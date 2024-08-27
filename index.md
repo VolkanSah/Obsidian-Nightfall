@@ -28,17 +28,21 @@ function fetchRepos(page) {
     .then(data => {
       let repoList = document.getElementById('repo-list');
       repoList.innerHTML = '';
-      data.filter(repo => {
+      
+      let filteredData = data.filter(repo => {
         // Ausschließen von geforkten Repos und spezifischen Repos
         return !repo.fork && 
                repo.name !== 'volkansah.github.io' && 
                repo.name !== 'VolkanSah';
-      }).forEach(repo => {
+      });
+
+      filteredData.slice(0, perPage).forEach(repo => {
         let listItem = document.createElement('li');
         listItem.innerHTML = `<a href="${repo.html_url}">${repo.name}</a> - ${repo.description || 'Keine Beschreibung verfügbar'}`;
         repoList.appendChild(listItem);
       });
-      updatePagination();
+
+      updatePagination(filteredData.length);
     })
     .catch(error => {
       console.error('Error:', error);
@@ -47,11 +51,11 @@ function fetchRepos(page) {
     });
 }
 
-function updatePagination() {
-  const totalPages = Math.ceil(totalRepos / perPage);
+function updatePagination(filteredCount) {
+  const totalPages = Math.ceil(filteredCount / perPage);
   document.getElementById('page-info').textContent = `Seite ${currentPage} von ${totalPages}`;
   document.getElementById('prev').disabled = currentPage === 1;
-  document.getElementById('next').disabled = currentPage === totalPages;
+  document.getElementById('next').disabled = currentPage === totalPages || filteredCount <= perPage;
 }
 
 document.getElementById('prev').addEventListener('click', () => {
