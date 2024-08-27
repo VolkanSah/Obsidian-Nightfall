@@ -3,7 +3,6 @@ layout: default
 title: Meine GitHub Repositories
 ---
 
-## GitHub Repositories
 
 <div class="container">
     <div class="row" id="repo-cards" data-masonry='{"percentPosition": true }'>
@@ -14,9 +13,8 @@ title: Meine GitHub Repositories
 <div id="pagination" class="text-center mt-4">
   <It seems there was a cut-off in the middle of the `index.md` file, so I’ll continue from where it left off:
 
-### 2. `index.md` (continued)
 
-```markdown
+
 <div id="pagination" class="text-center mt-4">
   <button id="prev" class="btn btn-primary" disabled>Vorherige</button>
   <span id="page-info" class="mx-2"></span>
