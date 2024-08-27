@@ -5,80 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     <meta name="description" content="Ai Code Craft - development with passion" />
-    <link rel="canonical" href="https://aicodecraft.io/" />
-    <meta name="author" content="Volkan Kücükbudak">
-    <meta name="publisher" content="AiCodeCraft.io">
-    <meta name="copyright" content="S. Volkan Sah Kücükbudak">
-    <meta name="keywords" content="ai, ki, design, developer, seo, sem, web">
-    <meta name="page-topic" content="Dienstleistung">
-    <meta name="page-type" content="Produktinfo">
-    <meta name="audience" content="Alle">
-    <meta http-equiv="content-language" content="en">
-    <meta name="robots" content="index, follow">
-    <meta name="DC.Creator" content="Volkan Kücükbudak">
-    <meta name="DC.Publisher" content="AiCodeCraft.io">
-    <meta name="DC.Rights" content="S. Volkan Sah Kücükbudak">
-    <meta name="DC.Description" content="Ai Code Craft - development with passion">
-    <meta name="DC.Language" content="en">
-    <meta property="og:locale" content="de_DE" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Ai Code Craft - development with passion" />
-    <meta property="og:description" content="" />
-    <meta property="og:url" content="https://aicodecraft.io/" />
-    <meta property="og:site_name" content="aicodecraft ?" />
-    <meta property="og:image" content="https://aicodecraft.io/img/logo.webp" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:label1" content="" />
-    <meta name="twitter:data1" content="" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link rel="icon" href="https://aicodecraft.io/img/logo.webp" sizes="32x32" />
-    <link rel="icon" href="https://aicodecraft.io/img/logo.webp" sizes="192x192" />
-    <link rel="apple-touch-icon" href="https://aicodecraft.io/img/logo.webp" />
-    <meta name="msapplication-TileImage" content="https://aicodecraft.io/img/logo-270x270.webp" />
     <style>
-        /* Deine CSS-Regeln hier, angepasst aus deinem bestehenden Design */
         body {
             background-color: #0D1117;
             color: #C9D1D9;
         }
-        a {
-            color: #58A6FF;
-        }
-        a:hover {
-            color: #1F6FEB;
-        }
-        .btn {
-            border-radius: 2px;
-        }
-        .close {
-            color: #58A6FF;
-            font-size: 1.5em;
+        .navbar {
+            background-color: #161B22;
         }
         .card {
             background-color: #161B22;
             border: 1px solid #05172c;
-            border-radius: 2px;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
         }
-        .navbar {
-            background-color: #161B22;
-        }
-        .modal .modal-content {
+        .modal-content {
             background-color: #0D1117;
             color: #C9D1D9;
-            border: 1px solid #05172c;
-            border-radius: 2px;
         }
         footer {
             background-color: #161B22;
-            padding: 20px 0;
             color: #C9D1D9;
-            margin-top: 20px;
+            padding: 20px 0;
         }
-    </style>    
-
-
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -87,11 +37,11 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse nav-social-links" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="index.html">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" target="_blank" href="https://volkansah.github.io/">German</a></li>
-                    <li class="nav-item"><a class="nav-link" target="_blank" href="https://jugendamt-deutschland.de/treffen-sie-jade/">JadeGPT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://volkansah.github.io/">German</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://jugendamt-deutschland.de/treffen-sie-jade/">JadeGPT</a></li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="https://volkansah.github.io" target="_blank" class="nav-link"><i class="fab fa-github"></i></a></li>
@@ -101,55 +51,26 @@
             </div>
         </div>
     </nav>
-    <hr>
-    <div class="container">
+
+    <div class="container mt-5">
         {{ content }}
     </div>
-    <hr>
+
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="footer-card">
-                        <img data-src="_layouts/logo-footer.webp" alt="Website Footer Logo" class="lazyload img-fluid">
-                    </div>
+                    <img data-src="_layouts/logo-footer.webp" alt="Website Footer Logo" class="lazyload img-fluid">
                 </div>
                 <div class="col-md-3">
-                    <div class="footer-card">
-                        <h3>Main Services</h3>
-                        <ul>
-                            <li>Webserver development</li>
-                            <li>Application development</li>
-                            <li>Design development</li>
-                            <li>Artificial intelligence</li>
-                        </ul>
-                    </div>
+                    <h3>Main Services</h3>
+                    <ul>
+                        <li>Webserver development</li>
+                        <li>Application development</li>
+                        <li>Design development</li>
+                        <li>Artificial intelligence</li>
+                    </ul>
                 </div>
                 <div class="col-md-3">
-                    <div class="footer-card">
-                        <h3>Optional Services</h3>
-                        <ul>
-                            <li>Pentesting Application</li>
-                            <li>Searchengine Optimisation</li>
-                            <li>Social Marketing (SEM)</li>
-                            <li>Offensive Security (NCF)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <img data-src="_layouts/love-you-my-son.webp" alt="Me and my son" class="lazyload footer-image">
-                </div>
-            </div>
-            <hr>
-            <div class="row copyright-row">
-                <div class="col-md-12">
-                    <p>&copy; 2008-2023 AICodeCraft.io. All Rights Reserved. <a href="privacy.html" title="Inprint & Privacy of AiCodeCraft.io">Inprint/Privacy</a></p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" crossorigin="anonymous" async></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+                    <h3>Optional Services</h3>
+                    
