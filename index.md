@@ -7,17 +7,16 @@ title: Meine GitHub Repositories
 
 <div class="container">
     <ul id="repo-list" class="list-unstyled row"></ul>
-    <div id="pagination" class="text-center mt-4">
-        <button id="prev" class="btn btn-primary" disabled>Vorherige</button>
-        <span id="page-info" class="mx-2"></span>
-        <button id="next" class="btn btn-primary">Nächste</button>
+    <div id="load-more-container" class="text-center mt-4">
+        <button id="load-more" class="btn btn-primary">Mehr laden</button>
     </div>
 </div>
 
 <script>
 let currentPage = 1;
-const perPage = 12; // Anzeigen von 12 Repositories pro Seite
+const perPage = 12; // Laden von 12 Repositories pro Klick
 let totalRepos = 0;
+let loadedRepos = 0;
 
 function fetchRepos(page) {
   fetch(`https://api.github.com/users/volkansah/repos?type=owner&sort=updated&per_page=${perPage}&page=${page}`)
@@ -27,7 +26,6 @@ function fetchRepos(page) {
     })
     .then(data => {
       let repoList = document.getElementById('repo-list');
-      repoList.innerHTML = '';
 
       let filteredData = data.filter(repo => {
         return !repo.fork && 
@@ -44,20 +42,20 @@ function fetchRepos(page) {
             <div class="card-body">
               <h5 class="card-title">${repo.name}</h5>
               <p class="card-text">${repo.description || 'Keine Beschreibung verfügbar'}</p>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#repoModal-${index}" onclick="loadReadme('${repo.full_name}', ${index})">Details anzeigen</button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#repoModal-${loadedRepos}" onclick="loadReadme('${repo.full_name}', ${loadedRepos})">Details anzeigen</button>
             </div>
           </div>
 
-          <div class="modal fade" id="repoModal-${index}" tabindex="-1" role="dialog" aria-labelledby="repoModalLabel-${index}" aria-hidden="true">
+          <div class="modal fade" id="repoModal-${loadedRepos}" tabindex="-1" role="dialog" aria-labelledby="repoModalLabel-${loadedRepos}" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="repoModalLabel-${index}">${repo.name}</h5>
+                  <h5 class="modal-title" id="repoModalLabel-${loadedRepos}">${repo.name}</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body" id="repoContent-${index}">
+                <div class="modal-body" id="repoContent-${loadedRepos}">
                   <p>Lade README...</p>
                 </div>
                 <div class="modal-footer">
@@ -69,9 +67,12 @@ function fetchRepos(page) {
           </div>
         `;
         repoList.appendChild(listItem);
+        loadedRepos++;
       });
 
-      updatePagination();
+      if (loadedRepos >= totalRepos) {
+        document.getElementById('load-more').style.display = 'none';
+      }
     })
     .catch(error => {
       console.error('Error:', error);
@@ -93,27 +94,11 @@ function loadReadme(repoFullName, index) {
   });
 }
 
-function updatePagination() {
-  const totalPages = Math.ceil(totalRepos / perPage);
-  document.getElementById('page-info').textContent = `Seite ${currentPage} von ${totalPages}`;
-  document.getElementById('prev').disabled = currentPage === 1;
-  document.getElementById('next').disabled = currentPage === totalPages;
-}
-
-document.getElementById('prev').addEventListener('click', () => {
-  if (currentPage > 1) {
-    currentPage--;
-    fetchRepos(currentPage);
-  }
+document.getElementById('load-more').addEventListener('click', () => {
+  currentPage++;
+  fetchRepos(currentPage);
 });
 
-document.getElementById('next').addEventListener('click', () => {
-  const totalPages = Math.ceil(totalRepos / perPage);
-  if (currentPage < totalPages) {
-    currentPage++;
-    fetchRepos(currentPage);
-  }
-});
-
+// Initiales Laden der ersten Seite
 fetchRepos(currentPage);
 </script>
