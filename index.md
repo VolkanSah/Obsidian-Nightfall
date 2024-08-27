@@ -8,7 +8,7 @@ title: Meine GitHub Repositories
 <ul id="repo-list"></ul>
 
 <script>
-  fetch('https://api.github.com/users/DEIN_BENUTZERNAME/repos')
+  fetch('https://api.github.com/users/volkansah/repos')
     .then(response => response.json())
     .then(data => {
       let repoList = document.getElementById('repo-list');
