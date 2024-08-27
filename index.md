@@ -1,5 +1,22 @@
+---
+layout: default
+title: Meine GitHub Repositories
+---
+
+## GitHub Repositories
+
+<div class="container">
+    <ul id="repo-list" class="list-unstyled"></ul>
+    <div id="pagination" class="text-center mt-4">
+        <button id="prev" class="btn btn-primary" disabled>Vorherige</button>
+        <span id="page-info" class="mx-2"></span>
+        <button id="next" class="btn btn-primary">Nächste</button>
+    </div>
+</div>
+
+<script>
 let currentPage = 1;
-const perPage = 6;
+const perPage = 100;
 let totalRepos = 0;
 
 function fetchRepos(page) {
@@ -10,59 +27,17 @@ function fetchRepos(page) {
     })
     .then(data => {
       let repoList = document.getElementById('repo-list');
-      let repoModals = document.getElementById('repo-modals');
       repoList.innerHTML = '';
-      repoModals.innerHTML = '';
-
       data.filter(repo => {
-        return !repo.fork && repo.name !== 'volkansah.github.io' && repo.name !== 'VolkanSah';
+        // Ausschließen von geforkten Repos und spezifischen Repos
+        return !repo.fork && 
+               repo.name !== 'volkansah.github.io' && 
+               repo.name !== 'VolkanSah';
       }).forEach(repo => {
-        // Listeneintrag für jedes Repo erstellen
         let listItem = document.createElement('li');
-        listItem.innerHTML = `<a href="#" data-toggle="modal" data-target="#modal-${repo.name}">${repo.name}</a> - ${repo.description || 'Keine Beschreibung verfügbar'}`;
+        listItem.innerHTML = `<a href="${repo.html_url}">${repo.name}</a> - ${repo.description || 'Keine Beschreibung verfügbar'}`;
         repoList.appendChild(listItem);
-
-        // Modal für jedes Repo erstellen
-        let modal = document.createElement('div');
-        modal.className = 'modal fade';
-        modal.id = `modal-${repo.name}`;
-        modal.setAttribute('tabindex', '-1');
-        modal.setAttribute('role', 'dialog');
-        modal.setAttribute('aria-labelledby', `modalLabel-${repo.name}`);
-        modal.setAttribute('aria-hidden', 'true');
-        modal.innerHTML = `
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel-${repo.name}">${repo.name}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <p>Loading...</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Schließen</button>
-              </div>
-            </div>
-          </div>
-        `;
-        repoModals.appendChild(modal);
-
-        // README-Datei in das Modal laden
-        fetch(`https://api.github.com/repos/volkansah/${repo.name}/readme`, {
-          headers: { 'Accept': 'application/vnd.github.v3.html+json' }
-        })
-        .then(response => response.text())
-        .then(readme => {
-          document.querySelector(`#modal-${repo.name} .modal-body`).innerHTML = readme;
-        })
-        .catch(() => {
-          document.querySelector(`#modal-${repo.name} .modal-body`).innerHTML = 'Keine README-Datei gefunden.';
-        });
       });
-      
       updatePagination();
     })
     .catch(error => {
@@ -95,3 +70,4 @@ document.getElementById('next').addEventListener('click', () => {
 });
 
 fetchRepos(currentPage);
+</script>
