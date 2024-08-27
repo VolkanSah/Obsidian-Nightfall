@@ -13,23 +13,17 @@ fetch('https://api.github.com/users/volkansah/repos')
   .then(data => {
     let repoList = document.getElementById('repo-list');
     data.forEach(repo => {
-      let listItem = document.createElement('li');
-      listItem.innerHTML = `<a href="${repo.html_url}">${repo.name}</a> - ${repo.description} (Forks: ${repo.forks_count})`;
-      repoList.appendChild(listItem);
-
-      // Fetch and list forks if any
-      if (repo.forks_count > 0) {
-        fetch(repo.forks_url)
-          .then(forkResponse => forkResponse.json())
-          .then(forks => {
-            let forkList = document.createElement('ul');
-            forks.forEach(fork => {
-              let forkItem = document.createElement('li');
-              forkItem.innerHTML = `<a href="${fork.html_url}">${fork.full_name}</a>`;
-              forkList.appendChild(forkItem);
-            });
-            listItem.appendChild(forkList);
-          });
+      // Überprüft, ob das Repository ein Fork ist anhand des Namens
+      if (repo.name.endsWith('-fork')) {
+        // Optional: Forks hervorheben oder anders darstellen
+        let listItem = document.createElement('li');
+        listItem.innerHTML = `<a href="${repo.html_url}">${repo.name}</a> - Geforkt von ${repo.parent.full_name}`;
+        repoList.appendChild(listItem);
+      } else {
+        // Normale Anzeige für eigene Repositories
+        let listItem = document.createElement('li');
+        listItem.innerHTML = `<a href="${repo.html_url}">${repo.name}</a> - ${repo.description}`;
+        repoList.appendChild(listItem);
       }
     });
   });
