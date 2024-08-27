@@ -1,0 +1,6 @@
+title: My GitHub Page
+description: >- 
+  Eine einfache Seite, die meine GitHub-Repositories anzeigt.
+baseurl: "" # Muss leer sein, wenn du GitHub Pages mit einem benutzerdefinierten Domainnamen nutzt.
+url: "https://volkansah.github.io/" # Ersetze durch deine URL.
+theme: minima
