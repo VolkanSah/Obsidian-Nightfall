@@ -2,29 +2,38 @@
 layout: default
 title: My GitHub Repositories
 ---
-
 <div class="container">
     <div class="row" id="repo-list" data-masonry='{"percentPosition": true }'></div>
+    <div class="row mt-3">
+        <div class="col-12 text-center">
+            <button id="prevPage" class="btn btn-secondary" onclick="loadPrevPage()">Previous</button>
+            <button id="nextPage" class="btn btn-secondary" onclick="loadNextPage()">Next</button>
+        </div>
+    </div>
 </div>
 
 <script>
-function fetchAllRepos() {
-  fetch(`https://api.github.com/users/volkansah/repos?type=owner&sort=updated&per_page=100`)
-    .then(response => response.json())
+let currentPage = 1;
+const perPage = 9; // Anzahl der Repos pro Seite
+
+function fetchAllRepos(page = 1) {
+  fetch(`https://api.github.com/users/volkansah/repos?type=owner&sort=updated&per_page=${perPage}&page=${page}`)
+    .then(response => {
+      const linkHeader = response.headers.get('Link');
+      updatePaginationButtons(linkHeader);
+      return response.json();
+    })
     .then(data => {
       let repoList = document.getElementById('repo-list');
       repoList.innerHTML = '';
-
       let filteredData = data.filter(repo => {
         return !repo.fork && 
                repo.name !== 'volkansah.github.io' && 
                repo.name !== 'VolkanSah';
       });
-
       filteredData.forEach((repo, index) => {
         let listItem = document.createElement('div');
         listItem.className = 'col-md-4';
-
         listItem.innerHTML = `
           <div class="card mb-4">
             <div class="card-body">
@@ -33,7 +42,6 @@ function fetchAllRepos() {
               <button class="btn btn-primary" data-toggle="modal" data-target="#repoModal-${index}" onclick="loadReadme('${repo.full_name}', ${index})">View Details</button>
             </div>
           </div>
-
           <div class="modal fade" id="repoModal-${index}" tabindex="-1" role="dialog" aria-labelledby="repoModalLabel-${index}" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
@@ -56,7 +64,6 @@ function fetchAllRepos() {
         `;
         repoList.appendChild(listItem);
       });
-
       // Masonry reinitialize after adding all items
       imagesLoaded(repoList, function() {
         new Masonry(repoList, {
@@ -72,6 +79,41 @@ function fetchAllRepos() {
     });
 }
 
+function updatePaginationButtons(linkHeader) {
+  const links = parseLinkHeader(linkHeader);
+  const prevButton = document.getElementById('prevPage');
+  const nextButton = document.getElementById('nextPage');
+
+  prevButton.disabled = !links.prev;
+  nextButton.disabled = !links.next;
+}
+
+function parseLinkHeader(header) {
+  if (!header) return {};
+  const parts = header.split(',');
+  const links = {};
+  parts.forEach(p => {
+    const section = p.split(';');
+    if (section.length != 2) return;
+    const url = section[0].replace(/<(.*)>/, '$1').trim();
+    const name = section[1].replace(/rel="(.*)"/, '$1').trim();
+    links[name] = url;
+  });
+  return links;
+}
+
+function loadPrevPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    fetchAllRepos(currentPage);
+  }
+}
+
+function loadNextPage() {
+  currentPage++;
+  fetchAllRepos(currentPage);
+}
+
 function loadReadme(repoFullName, index) {
   fetch(`https://api.github.com/repos/${repoFullName}/readme`, {
     headers: { 'Accept': 'application/vnd.github.v3.html' }
@@ -85,6 +127,6 @@ function loadReadme(repoFullName, index) {
   });
 }
 
-// Load all repositories on page load
+// Initial load
 fetchAllRepos();
 </script>
