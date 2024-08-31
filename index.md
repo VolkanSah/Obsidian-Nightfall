@@ -113,13 +113,32 @@ function loadNextPage() {
   currentPage++;
   fetchAllRepos(currentPage);
 }
-
 function loadReadme(repoFullName, index) {
   fetch(`https://api.github.com/repos/${repoFullName}/readme`, {
     headers: { 'Accept': 'application/vnd.github.v3.html' }
   })
   .then(response => response.text())
   .then(data => {
+    // Bilder-URLs anpassen
+    const repoUrl = `https://github.com/${repoFullName}/blob/master/`;
+    data = data.replace(/src="([^"]+)"/g, (match, p1) => {
+      // Überprüfen, ob der Pfad relativ ist
+      if (!p1.startsWith('http') && !p1.startsWith('//')) {
+        return `src="${repoUrl}${p1}"`;
+      }
+      return match;
+    });
+
+    // Ankerlinks anpassen
+    data = data.replace(/href="#([^"]+)"/g, (match, p1) => {
+      return `href="#repoContent-${index}-${p1}"`;
+    });
+
+    // IDs im Inhalt anpassen
+    data = data.replace(/id="([^"]+)"/g, (match, p1) => {
+      return `id="repoContent-${index}-${p1}"`;
+    });
+
     document.getElementById(`repoContent-${index}`).innerHTML = data;
   })
   .catch(error => {
