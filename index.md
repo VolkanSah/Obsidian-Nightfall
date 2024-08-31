@@ -14,7 +14,7 @@ title: My GitHub Repositories
 
 <script>
 let currentPage = 1;
-const perPage = 9; // Anzahl der Repos pro Seite
+const perPage = 18; // Anzahl der Repos pro Seite
 
 function fetchAllRepos(page = 1) {
   fetch(`https://api.github.com/users/volkansah/repos?type=owner&sort=updated&per_page=${perPage}&page=${page}`)
