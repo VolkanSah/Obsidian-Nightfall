@@ -1,12 +1,12 @@
 
-# Obsidian Nightfall v0.1- A Developer's GitHub Page Theme
+# Obsidian Nightfall v0.1 - A Developer's GitHub Page Theme
 
-**Obsidian Nightfall** is a custom Jekyll theme designed specifically for developers who want to showcase their GitHub repositories on a personalized website. This theme can be used as your main GitHub Page (`username.github.io`) or within any sub-repository. It provides a sleek, modern, and dark-themed interface with a focus on readability and usability.
+**Obsidian Nightfall** is a custom Jekyll theme designed specifically for developers who want to showcase their GitHub repositories on a personalized website automatically. This theme can be used as your main GitHub Page (`username.github.io`) or within any sub-repository. It provides a sleek, modern, and dark-themed interface with a focus on readability and usability.
 
 ## Key Features
 
-- **Automatic GitHub Repository Display**: The theme fetches and displays your GitHub repositories dynamically.
-- **Modal Pop-ups for Repository Details**: View repository details, including README files, within modal pop-ups.
+- **Automatic GitHub Repository Display**: The theme dynamically fetches and displays your GitHub repositories.
+- **Modal Pop-ups for Repository Details**: View repository details, including README files, within modal pop-ups, ensuring a seamless browsing experience.
 - **Responsive and Dark-Themed Design**: A Bootstrap-based dark theme that looks great on all devices.
 - **Automated Deployment with GitHub Actions**: Automatically build and deploy your site using GitHub Actions.
 
@@ -14,7 +14,7 @@
 
 ### Step 1: Fork the Repository
 
-1. **Fork this repository**: Click the "Fork" button at the top right of this repository page to create a copy of it under your own GitHub account.
+1. **Fork this repository**: Click the "Fork" button at the top right of this repository page to create a copy under your own GitHub account.
 
 2. **Rename the Repository**: After forking, rename the repository to `username.github.io` if you want to use it as your main GitHub Page, or to any other name if you want to use it as a project page.
 
@@ -45,6 +45,8 @@
 
 2. **GitHub Actions Workflow**:
    - The workflow file located in `.github/workflows/` is already set up to automatically build and deploy your site whenever you push changes to the `main` branch.
+   - **Tip:** Rename the `.github/workflows/deploy.yml` file to `.github/workflows/deploy.yml.example` to prevent the actions from running during setup. Once your setup is complete, rename `deploy.yml.example` back to `deploy.yml` to enable the deployment process.
+
 
 ### Step 5: Deploy Your Site
 
@@ -54,13 +56,29 @@
 2. **View Your Site**:
    - Go to `https://your-username.github.io` (or `https://your-username.github.io/repo-name` for sub-repos) to see your live site.
 
+### Support My Work
+
+If you find this project useful, please consider giving it a :star: on GitHub. Your support helps me continue creating free, high-quality resources like this.
+
+Creating and maintaining this theme takes a significant amount of time and effort. If you'd like to support my work further, feel free to follow me on GitHub or consider becoming a sponsor. You can also buy me a coffee to keep me fueled for future updates!
+
+## Troubleshooting and Future Improvements
+
+### Known Issues
+
+- **Anchor Linking in Modals**: Currently, anchor links within the modal pop-ups are not correctly defined. This is a known issue and will be addressed in a future update. Stay tuned for improvements!
+
+### How to Report Issues
+
+If you encounter any issues or bugs while using this theme, please feel free to open an issue in the GitHub repository. Contributions and suggestions for improvement are always welcome!
+
 ## Contribution
 
 Feel free to contribute by submitting a pull request or opening an issue. Contributions that enhance functionality or improve the design are always welcome!
 
 ## License
 
-This theme is available under the [MIT License](LICENSE). In love tom my son!
+This theme is available under the [MIT License](LICENSE). Dedicated with love to my son!
 
 ## Acknowledgements
 
