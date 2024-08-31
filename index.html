@@ -27,6 +27,7 @@ function fetchAllRepos(page = 1) {
     .then(data => {
       let repoList = document.getElementById('repo-list');
       repoList.innerHTML = '';
+        // exclude repos 
       let filteredData = data.filter(repo => {
         return !repo.fork && 
                repo.name !== 'volkansah.github.io' && 
