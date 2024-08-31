@@ -15,11 +15,9 @@ title: My GitHub Repositories
 
 <script>
 let currentPage = 1;
-const perPage = 18; // Number of repositories per page
+const perPage = 18; // Anzahl der Repos pro Seite
 
-// Function to fetch and display GitHub repositories
 function fetchAllRepos(page = 1) {
-    // Make sure to replace 'volkansah' with your own GitHub username
   fetch(`https://api.github.com/users/volkansah/repos?type=owner&sort=updated&per_page=${perPage}&page=${page}`)
     .then(response => {
       const linkHeader = response.headers.get('Link');
@@ -29,7 +27,7 @@ function fetchAllRepos(page = 1) {
     .then(data => {
       let repoList = document.getElementById('repo-list');
       repoList.innerHTML = '';
-        // Filter out repositories you don't want to display, specify the repo names
+        // exclude repos 
       let filteredData = data.filter(repo => {
         return !repo.fork && 
                repo.name !== 'volkansah.github.io' && 
@@ -68,7 +66,7 @@ function fetchAllRepos(page = 1) {
         `;
         repoList.appendChild(listItem);
       });
-      // Reinitialize Masonry after all items are added
+      // Masonry reinitialize after adding all items
       imagesLoaded(repoList, function() {
         new Masonry(repoList, {
           itemSelector: '.col-md-4',
@@ -83,7 +81,6 @@ function fetchAllRepos(page = 1) {
     });
 }
 
-// Function to update pagination buttons based on the Link header from the GitHub API response
 function updatePaginationButtons(linkHeader) {
   const links = parseLinkHeader(linkHeader);
   const prevButton = document.getElementById('prevPage');
@@ -93,7 +90,6 @@ function updatePaginationButtons(linkHeader) {
   nextButton.disabled = !links.next;
 }
 
-// Function to parse the Link header for pagination links
 function parseLinkHeader(header) {
   if (!header) return {};
   const parts = header.split(',');
@@ -108,7 +104,6 @@ function parseLinkHeader(header) {
   return links;
 }
 
-// Function to load the previous page of repositories
 function loadPrevPage() {
   if (currentPage > 1) {
     currentPage--;
@@ -116,35 +111,32 @@ function loadPrevPage() {
   }
 }
 
-// Function to load the next page of repositories
 function loadNextPage() {
   currentPage++;
   fetchAllRepos(currentPage);
 }
-
-// Function to load the README.md file of a repository
 function loadReadme(repoFullName, index) {
   fetch(`https://api.github.com/repos/${repoFullName}/readme`, {
     headers: { 'Accept': 'application/vnd.github.v3.html' }
   })
   .then(response => response.text())
   .then(data => {
-    // Adjust image URLs in README
+    // Bilder-URLs anpassen
     const repoUrl = `https://github.com/${repoFullName}/blob/master/`;
     data = data.replace(/src="([^"]+)"/g, (match, p1) => {
-      // Check if the path is relative
+      // Überprüfen, ob der Pfad relativ ist
       if (!p1.startsWith('http') && !p1.startsWith('//')) {
         return `src="${repoUrl}${p1}"`;
       }
       return match;
     });
 
-    // Adjust anchor links in README
+    // Ankerlinks anpassen
     data = data.replace(/href="#([^"]+)"/g, (match, p1) => {
       return `href="#repoContent-${index}-${p1}"`;
     });
 
-    // Adjust IDs in README content
+    // IDs im Inhalt anpassen
     data = data.replace(/id="([^"]+)"/g, (match, p1) => {
       return `id="repoContent-${index}-${p1}"`;
     });
@@ -156,6 +148,6 @@ function loadReadme(repoFullName, index) {
   });
 }
 
-// Initial load of repositories
+// Initial load
 fetchAllRepos();
 </script>
