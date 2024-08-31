@@ -39,7 +39,7 @@ function fetchAllRepos(page = 1) {
         listItem.innerHTML = `
           <div class="card mb-4">
             <div class="card-body">
-              <h5 class="card-title">Repository name: ${repo.name}</h5>
+              <h5 class="card-title">${repo.name}</h5>
               <p class="card-text">${repo.description || 'No description available'}</p>
               <button class="btn btn-primary" data-toggle="modal" data-target="#repoModal-${index}" onclick="loadReadme('${repo.full_name}', ${index})">View Details</button>
             </div>
@@ -48,7 +48,7 @@ function fetchAllRepos(page = 1) {
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="repoModalLabel-${index}">${repo.name}</h5>
+                  <h5 class="modal-title" id="repoModalLabel-${index}">Repository name: ${repo.name}</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
