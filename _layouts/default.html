@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     <meta name="description" content="Ai Code Craft - development with passion" />
+    <!-- Including Bootstrap CSS for responsive design and layout -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Including Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <style>
-/* Allgemeine Regeln */ 
+/* General styles for the body, links, and buttons */
         body {
             background-color: #0D1117;
             color: #C9D1D9;
@@ -26,17 +28,19 @@
             color: #58A6FF;
             font-size: 1.5em;
         }
+        /* Card styling to match the dark theme */
         .card {
             background-color: #161B22;
             border: 1px solid #05172c;
             border-radius: 2px;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
         }
-        /* Navbar Regeln */
+        /* Navbar styling for dark theme */
         .navbar {
             background-color: #161B22;
         }
         
+        /* Logo styling */
         .logo {
             margin-top: 15px;
             width: 199px;
@@ -45,6 +49,7 @@
             top: 50%;
             transform: translateY(-50%);
         }
+        /* Social media links in the navbar */
         .nav-social-links {
             display: flex;
             justify-content: flex-end;
@@ -59,6 +64,7 @@
         .nav-social-links .nav-item a:hover {
             color: #f00;
         }
+        /* Navbar link styling */
         .navbar-nav .nav-link {
             color: #000;
             font-size: 13px;
@@ -73,7 +79,7 @@
         .navbar-nav .nav-item .fab:hover {
             color: #f00;
         }
-        /* Modal Regeln */
+        /* Modal window styling */
         .modal .modal-content {
             background-color: #0D1117;
             color: #C9D1D9;
@@ -90,16 +96,14 @@
         .modal-style-service {
             list-style-type: none;
         }
+        /* Heading styles */
         h1,h2 {
-        font-size: 1.75rem;
-
+            font-size: 1.75rem;
         }
-
         h3,h4,h5 {
-        font-size: 1.45rem;
-
+            font-size: 1.45rem;
         }
-        /* Footer Regeln */
+        /* Footer styling */
         footer {
             background-color: #161B22;
             padding: 20px 0;
@@ -131,6 +135,7 @@
         footer ul li {
             padding-bottom: 5px;
         }
+        /* Copyright section styling */
         .copyright-row {
             background-color: #0D1117;
             text-align: center;
@@ -138,35 +143,35 @@
             padding-top: 20px;
         }
 
-/* Styling für Code-Highlights, passend zum dunklen Thema */
+/* Code highlighting styling for a dark theme */
 .highlight {
-    background-color: #21262D !important; /* Etwas hellerer Hintergrund für den Code-Block */
-    color: #C9D1D9 !important; /* Heller Text für guten Kontrast */
-    border-radius: 5px !important; /* Abgerundete Ecken für eine weiche Optik */
-    padding: 12px !important; /* Genügend Innenabstand für Lesbarkeit */
-    margin: 16px 0 !important; /* Abstand oben und unten zum Trennen des Code-Bereichs */
-    overflow: auto !important; /* Scrollen bei Bedarf */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7) !important; /* Sanfter Schlagschatten */
+    background-color: #21262D !important; /* Slightly lighter background for the code block */
+    color: #C9D1D9 !important; /* Light text for good contrast */
+    border-radius: 5px !important; /* Rounded corners for a softer look */
+    padding: 12px !important; /* Adequate padding for readability */
+    margin: 16px 0 !important; /* Space above and below to separate the code block */
+    overflow: auto !important; /* Scrollable if necessary */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7) !important; /* Soft drop shadow */
 }
 
-/* Styling für die eigentlichen Codezeilen */
+/* Styling for actual code lines */
 .highlight pre {
-    background-color: transparent !important; /* Kein Hintergrund für Pre-Tag */
-    color: inherit !important; /* Übernimmt die Textfarbe des übergeordneten Elements */
-    font-family: 'Fira Code', monospace !important; /* Monospace Schriftart für Code */
-    font-size: 14px !important; /* Angemessene Schriftgröße */
-    line-height: 1.6 !important; /* Gute Zeilenhöhe für Lesbarkeit */
-    margin: 0 !important; /* Kein zusätzlicher Abstand innerhalb des Pre-Tags */
+    background-color: transparent !important; /* No background for pre tag */
+    color: inherit !important; /* Inherits the parent element's color */
+    font-family: 'Fira Code', monospace !important; /* Monospace font for code */
+    font-size: 14px !important; /* Appropriate font size */
+    line-height: 1.6 !important; /* Good line height for readability */
+    margin: 0 !important; /* No extra space within the pre tag */
 }
 
-/* Styling für spezifische Elemente im Code (falls vorhanden) */
+/* Styling for specific elements within the code */
 .highlight .hljs-keyword,
 .highlight .hljs-built_in,
 .highlight .hljs-literal,
 .highlight .hljs-symbol,
 .highlight .hljs-bullet,
 .highlight .hljs-link {
-    color: #FF7B72 !important; /* Hervorhebung von Schlüsselwörtern in Rot */
+    color: #FF7B72 !important; /* Highlight keywords in red */
 }
 
 .highlight .hljs-string,
@@ -174,29 +179,29 @@
 .highlight .hljs-name,
 .highlight .hljs-type,
 .highlight .hljs-attr {
-    color: #A5D6FF !important; /* Hervorhebung von Strings und Titeln in Blau */
+    color: #A5D6FF !important; /* Highlight strings and titles in blue */
 }
 
 .highlight .hljs-comment,
 .highlight .hljs-quote {
-    color: #8B949E !important; /* Gedämpfte Farbe für Kommentare */
-    font-style: italic !important; /* Kommentare kursiv */
+    color: #8B949E !important; /* Muted color for comments */
+    font-style: italic !important; /* Italicize comments */
 }
 
-/* Fancy Effekte beim Überfahren mit der Maus */
+/* Fancy hover effects */
 .highlight:hover {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important; /* Schlagschatten beim Hover */
-    transform: scale(1.02) !important; /* Leichte Vergrößerung beim Hover */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important; /* Shadow effect on hover */
+    transform: scale(1.02) !important; /* Slight zoom on hover */
 }
 
-/* Anpassung der Scrollbar für ein dunkles Thema */
+/* Custom scrollbar styling for dark theme */
 .highlight::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
 .highlight::-webkit-scrollbar-thumb {
-    background-color: #444C56 !important; /* Dunklere Scrollbar für den Hintergrund */
+    background-color: #444C56 !important; /* Darker scrollbar thumb */
     border-radius: 10px !important;
 }
 
@@ -204,35 +209,35 @@
     background-color: #0D1117 !important;
 }
 
-   /* Styling für Snippet-Clipboard-Content, passend zum dunklen Thema */
+/* Styling for Snippet Clipboard Content, matching dark theme */
 .snippet-clipboard-content {
-    background-color: #21262D !important; /* Dunkler Hintergrund für den Snippet-Bereich */
-    color: #C9D1D9 !important; /* Heller Text für guten Kontrast */
-    border-radius: 5px !important; /* Abgerundete Ecken für eine weiche Optik */
-    padding: 12px !important; /* Genügend Innenabstand für Lesbarkeit */
-    margin: 16px 0 !important; /* Abstand oben und unten zum Trennen des Snippet-Bereichs */
-    overflow: auto !important; /* Scrollen bei Bedarf */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7) !important; /* Sanfter Schlagschatten */
+    background-color: #21262D !important; /* Dark background for snippet area */
+    color: #C9D1D9 !important; /* Light text for good contrast */
+    border-radius: 5px !important; /* Rounded corners for a soft look */
+    padding: 12px !important; /* Adequate padding for readability */
+    margin: 16px 0 !important; /* Space above and below to separate snippet area */
+    overflow: auto !important; /* Scrollable if necessary */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7) !important; /* Soft drop shadow */
 }
 
-/* Styling für die eigentlichen Codezeilen im Snippet */
+/* Styling for code lines in the snippet */
 .snippet-clipboard-content pre {
-    background-color: transparent !important; /* Kein Hintergrund für Pre-Tag */
-    color: inherit !important; /* Übernimmt die Textfarbe des übergeordneten Elements */
-    font-family: 'Fira Code', monospace !important; /* Monospace Schriftart für Code */
-    font-size: 14px !important; /* Angemessene Schriftgröße */
-    line-height: 1.6 !important; /* Gute Zeilenhöhe für Lesbarkeit */
-    margin: 0 !important; /* Kein zusätzlicher Abstand innerhalb des Pre-Tags */
+    background-color: transparent !important; /* No background for pre tag */
+    color: inherit !important; /* Inherits the parent element's color */
+    font-family: 'Fira Code', monospace !important; /* Monospace font for code */
+    font-size: 14px !important; /* Appropriate font size */
+    line-height: 1.6 !important; /* Good line height for readability */
+    margin: 0 !important; /* No extra space within the pre tag */
 }
 
-/* Styling für spezifische Elemente im Snippet-Code */
+/* Styling for specific elements in the snippet code */
 .snippet-clipboard-content .hljs-keyword,
 .snippet-clipboard-content .hljs-built_in,
 .snippet-clipboard-content .hljs-literal,
 .snippet-clipboard-content .hljs-symbol,
 .snippet-clipboard-content .hljs-bullet,
 .snippet-clipboard-content .hljs-link {
-    color: #FF7B72 !important; /* Hervorhebung von Schlüsselwörtern in Rot */
+    color: #FF7B72 !important; /* Highlight keywords in red */
 }
 
 .snippet-clipboard-content .hljs-string,
@@ -240,29 +245,29 @@
 .snippet-clipboard-content .hljs-name,
 .snippet-clipboard-content .hljs-type,
 .snippet-clipboard-content .hljs-attr {
-    color: #A5D6FF !important; /* Hervorhebung von Strings und Titeln in Blau */
+    color: #A5D6FF !important; /* Highlight strings and titles in blue */
 }
 
 .snippet-clipboard-content .hljs-comment,
 .snippet-clipboard-content .hljs-quote {
-    color: #8B949E !important; /* Gedämpfte Farbe für Kommentare */
-    font-style: italic !important; /* Kommentare kursiv */
+    color: #8B949E !important; /* Muted color for comments */
+    font-style: italic !important; /* Italicize comments */
 }
 
-/* Fancy Effekte beim Überfahren mit der Maus */
+/* Fancy hover effects for snippet */
 .snippet-clipboard-content:hover {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important; /* Schlagschatten beim Hover */
-    transform: scale(1.02) !important; /* Leichte Vergrößerung beim Hover */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important; /* Shadow effect on hover */
+    transform: scale(1.02) !important; /* Slight zoom on hover */
 }
 
-/* Anpassung der Scrollbar für ein dunkles Thema */
+/* Custom scrollbar styling for dark theme in snippet */
 .snippet-clipboard-content::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
 .snippet-clipboard-content::-webkit-scrollbar-thumb {
-    background-color: #444C56 !important; /* Dunklere Scrollbar für den Hintergrund */
+    background-color: #444C56 !important; /* Darker scrollbar thumb */
     border-radius: 10px !important;
 }
 
@@ -270,9 +275,7 @@
     background-color: #0D1117 !important;
 }
 
-
-
-        /* Medienabfrage */
+/* Responsive styling for images in the footer */
         @media (max-width: 768px) {
             .footer-image {
                 height: auto;
@@ -283,14 +286,17 @@
 </style>
 </head>
 <body>
-<!-- navi start-->
+<!-- Start of navigation bar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
+        <!-- Website logo -->
         <a class="navbar-brand" href="/"><img src="{{ '/assets/img/logo.webp' | relative_url }}" alt="AI Code Craft Website Logo">
         </a>
+        <!-- Button for toggling the navigation menu on small screens -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <!-- Navigation links -->
         <div class="collapse navbar-collapse nav-social-links" id="navbarNav">
             <div class="d-flex">
                 <ul class="navbar-nav ml-auto">
@@ -305,6 +311,7 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
+                    <!-- Social media links with icons -->
                     <li class="nav-item">
                         <a href="https://volkansah.github.io" target="_blank" rel="noopener noreferrer nofollow" class="nav-link"><i class="fab fa-github"></i></a>
                     </li>
@@ -322,84 +329,91 @@
     </div>
 </nav>
 
-    <div class="container mt-5">
-        {{ content }}
-    </div>
+<!-- Main content area -->
+<div class="container mt-5">
+    {{ content }}
+</div>
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                <img src="{{ '/assets/img/logo-footer.webp' | relative_url }}" alt="Website Footer Logo">
-                </div>
-                <div class="col-md-3">
-                    <h3>Main Services</h3>
-                    <ul>
-                        <li>Webserver development</li>
-                        <li>Application development</li>
-                        <li>Design development</li>
-                        <li>Artificial intelligence</li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h3>Optional Services</h3>
-                    <ul>
-                        <li>Pentesting Application</li>
-                        <li>Searchengine Optimisation</li>
-                        <li>Social Marketing (SEM)</li>
-                        <li>Offensive Security (NCF)</li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                  <img src="{{ '/assets/img/love-you-my-son.webp' | relative_url }}" alt="Love You My Son">
-                </div>
+<!-- Footer section -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            <!-- Footer logo -->
+            <img src="{{ '/assets/img/logo-footer.webp' | relative_url }}" alt="Website Footer Logo">
             </div>
-            <div class="row mt-4">
-                <div class="col-md-12 text-center">
-                    <p>&copy; 2008-2023 AICodeCraft.io. All Rights Reserved. <a href="privacy.html">Inprint/Privacy</a></p>
-                </div>
+            <div class="col-md-3">
+                <h3>Main Services</h3>
+                <ul>
+                    <li>Webserver development</li>
+                    <li>Application development</li>
+                    <li>Design development</li>
+                    <li>Artificial intelligence</li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Optional Services</h3>
+                <ul>
+                    <li>Pentesting Application</li>
+                    <li>Searchengine Optimisation</li>
+                    <li>Social Marketing (SEM)</li>
+                    <li>Offensive Security (NCF)</li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+              <!-- Image in footer -->
+              <img src="{{ '/assets/img/love-you-my-son.webp' | relative_url }}" alt="Love You My Son">
             </div>
         </div>
-    </footer>
+        <!-- Copyright section -->
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <p>&copy; 2008-2023 AICodeCraft.io. All Rights Reserved. <a href="privacy.html">Inprint/Privacy</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<!-- JavaScript for Bootstrap and other libraries -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 
-    <script>
-    function loadReadme(repoFullName, index) {
-      fetch(`https://api.github.com/repos/${repoFullName}/readme`, {
-        headers: { 'Accept': 'application/vnd.github.v3.html' }
-      })
-      .then(response => response.text())
-      .then(data => {
-        // Bilder-URLs anpassen
-        const repoUrl = `https://raw.githubusercontent.com/${repoFullName}/master/`;
-        data = data.replace(/src="([^"]+)"/g, (match, p1) => {
-          // Überprüfen, ob der Pfad relativ ist
-          if (!p1.startsWith('http') && !p1.startsWith('//')) {
-            return `src="${repoUrl}${p1}"`;
-          }
-          return match;
-        });
+<script>
+/* Function to load README file from GitHub repository */
+function loadReadme(repoFullName, index) {
+  fetch(`https://api.github.com/repos/${repoFullName}/readme`, {
+    headers: { 'Accept': 'application/vnd.github.v3.html' }
+  })
+  .then(response => response.text())
+  .then(data => {
+    // Adjust image URLs
+    const repoUrl = `https://raw.githubusercontent.com/${repoFullName}/master/`;
+    data = data.replace(/src="([^"]+)"/g, (match, p1) => {
+      // Check if the path is relative
+      if (!p1.startsWith('http') && !p1.startsWith('//')) {
+        return `src="${repoUrl}${p1}"`;
+      }
+      return match;
+    });
 
-        // Ankerlinks anpassen
-        data = data.replace(/href="#([^"]+)"/g, (match, p1) => {
-          return `href="#repoContent-${index}-${p1}"`;
-        });
+    // Adjust anchor links
+    data = data.replace(/href="#([^"]+)"/g, (match, p1) => {
+      return `href="#repoContent-${index}-${p1}"`;
+    });
 
-        // IDs im Inhalt anpassen
-        data = data.replace(/id="([^"]+)"/g, (match, p1) => {
-          return `id="repoContent-${index}-${p1}"`;
-        });
+    // Adjust IDs in content
+    data = data.replace(/id="([^"]+)"/g, (match, p1) => {
+      return `id="repoContent-${index}-${p1}"`;
+    });
 
-        document.getElementById(`repoContent-${index}`).innerHTML = data;
-      })
-      .catch(error => {
-        document.getElementById(`repoContent-${index}`).innerHTML = '<p>README could not be loaded.</p>';
-      });
-    }
-    </script>
+    document.getElementById(`repoContent-${index}`).innerHTML = data;
+  })
+  .catch(error => {
+    document.getElementById(`repoContent-${index}`).innerHTML = '<p>README could not be loaded.</p>';
+  });
+}
+</script>
 </body>
 </html>
