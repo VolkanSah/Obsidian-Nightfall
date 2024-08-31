@@ -1,6 +1,7 @@
 title: Obsidian Nightfall
 description: >-
-  An elegante, dark Theme by Volkan Sah
-baseurl: "/test_jelly" # Der Name Ihres Repositories
-url: "https://volkansah.github.io" # Ihre GitHub Pages URL
-theme: minima # Oder dein eigenes Theme, z.B. "obsidian-nightfall", falls entwickelt.
+  An elegant, dark theme created by Volkan Sah, perfect for a modern and sleek user experience. It provides a visually pleasing interface with a focus on readability and style.
+baseurl: "/test_jelly" # The name of your repository
+url: "https://volkansah.github.io" # Your GitHub Pages URL
+theme: obsidian-nightfall # Or your custom theme, e.g., "obsidian-nightfall" if developed. ddefault minima
+
