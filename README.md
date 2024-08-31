@@ -28,6 +28,16 @@
    - `baseurl`: Leave this empty for the main page or set it to `/repo-name` for a sub-repo.
 
 2. **index.html**: Customize the `index.html` to personalize your landing page. The page automatically lists your repositories.
+3. **Exclude Repos**:
+   - If there are repositories you don’t want to display, you can exclude them by modifying the filtering function in the `index.html` file. 
+   - Open `index.html` and locate the following section:
+   
+   ```javascript
+   let filteredData = data.filter(repo => {
+       return !repo.fork && 
+              repo.name !== 'repo-name-to-exclude';
+   });
+   ```
 
 ### Step 3: Personalize Your Site
 
