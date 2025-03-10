@@ -135,6 +135,9 @@ function loadReadme(repoFullName, index) {
             // Preserve relative anchor links by avoiding unnecessary modifications
             data = data.replace(/href="#([^"]+)"/g, `href="#repoContent-${index}-$1"`);
 
+            / Ensure that the target elements have the corresponding IDs
+            data = data.replace(/id="([^"]+)"/g, `id="repoContent-${index}-$1"`);
+
             // Preserve relative image URLs by only updating non-absolute paths
             const repoUrl = `https://github.com/${repoFullName}/blob/master/`;
             data = data.replace(/src="([^"]+)"/g, (match, p1) => {
