@@ -138,6 +138,11 @@ function loadReadme(repoFullName, index) {
             // Ensure that the target elements have the corresponding IDs
             data = data.replace(/id="([^"]+)"/g, `id="repoContent-${index}-$1"`);
 
+           // Update heading elements to have the correct IDs
+            data = data.replace(/<h([1-6])([^>]*)id="([^"]+)"([^>]*)>/g, `<h$1$2id="repoContent-${index}-$3"$4>`);
+
+          
+
             // Preserve relative image URLs by only updating non-absolute paths
             const repoUrl = `https://github.com/${repoFullName}/blob/master/`;
             data = data.replace(/src="([^"]+)"/g, (match, p1) => {
