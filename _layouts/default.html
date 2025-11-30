@@ -415,32 +415,24 @@ function loadReadme(repoFullName, index) {
   });
 }
 
-// Latex
-// Beispiel: nach dem Einfügen von HTML in den Modal-Body
-function insertReadmeHtmlAndRender(readmeHtml, targetElement) {
-  targetElement.innerHTML = readmeHtml;
 
-  // MathJax v3
-  if (window.MathJax && MathJax.typesetPromise) {
-    MathJax.typesetPromise([targetElement]).catch(function (err) {
-      console.error('MathJax typeset error:', err);
-    });
-  }
-  // KaTeX auto-render fallback
-  else if (window.renderMathInElement) {
-    renderMathInElement(targetElement, {
-      delimiters: [
-        {left: "$$", right: "$$", display: true},
-        {left: "$", right: "$", display: false},
-        {left: "\\(", right: "\\)", display: false},
-        {left: "\\[", right: "\\]", display: true}
-      ]
-    });
-  }
-}
 
 
     
 </script>
+
+    <!-- MathJax konfigurieren -->
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)'], ['$', '$']],
+    displayMath: [['$$','$$']]
+  },
+  options: {
+    skipHtmlTags: ['script','noscript','style','textarea','pre','code']
+  }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>
