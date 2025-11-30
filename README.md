@@ -6,7 +6,7 @@
 > This Jelly theme, Obsidian Nightfall, is no longer actively maintained by me and has been archived.
 >
 > If you are interested in following this design style and seeing the latest development of my personal Jekyll theme, please check out my profile repository:
-> 
+> 
 > [Active Development Repository](https://github.com/VolkanSah/VolkanSah) | [Live Preview](https://volkansah.github.io/)
 >
 > The new theme is where I consolidate my current work and implement the "smarter" architecture. hoply 😄
